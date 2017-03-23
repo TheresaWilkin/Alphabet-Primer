@@ -5,22 +5,6 @@ require('isomorphic-fetch');
 
 const game_url = '/game/';
 
-
-export const incrementCount = counter => ({
-	type: 'INCREMENT',
-	counter
-});
-
-export const decrementCount = counter => ({
-	type: 'DECREMENT',
-	counter
-});
-
-export const engageTypeWriter = num => ({
-	type: 'ENGAGE_TYPEWRITER',
-	num
-});
-
 export const nextQuestion = question => ({
 	type: 'NEXT_QUESTION',
 	question
@@ -64,3 +48,13 @@ export const getCard = () => dispatch => {
 			console.error('error: ', err);
 		});
 };
+
+export const setSpeechRecognition = (status) => ({
+	type: 'SET_SPEECH_RECOGNITION',
+	status
+});
+
+export const setWinner = (status) => ({
+	type: 'SET_WINNER',
+	status
+});

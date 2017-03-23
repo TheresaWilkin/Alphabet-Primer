@@ -3,29 +3,16 @@ import React from 'react';
 class Welcome extends React.Component {
 	render() {
 		return (
-
-			<div>
-				<div className="welcome">
-					<p className="headline"> instaFrench 🇫🇷 </p>
-				</div>
-				<div
-				className="login"
-				>
-					<a
-					href="/auth/google"
-					>
-					<img
-					alt="login"
-					className="logingoog shake"
-					src='./assets/goog.png'
-					/>
+			<div className="welcome">
+				<div className="col-2" />
+				<div className="login-container col-8">
+					<h2>Alphabet</h2>
+					<h1>Primer</h1>
+					<a href="/auth/google">
+						<img alt="login" className="google" src='./assets/goog.png' />
 					</a>
 				</div>
-					<img
-					alt="paris"
-					className="paris"
-					src='./assets/paris.png'
-					/>
+				<div className="col-2" />
 			</div>
 		);
 	}

@@ -17,7 +17,7 @@ const GoogleStrategy = require('passport-google-oauth20').Strategy;
 passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    callbackURL: 'https://stark-river-80170.herokuapp.com/auth/google/callback'
+    callbackURL: 'http://localhost:3000/auth/google/callback'
   },
   (accessToken, refreshToken, profile, done) => {
     getArrayOfQuestions(profile.id)
@@ -37,6 +37,7 @@ passport.use(new GoogleStrategy({
         done(null, user);
     })
     .catch((err) => {
+        console.log(err);
         done(err);
     });
 }));
@@ -149,7 +150,7 @@ app.put('/game', passport.authenticate('bearer', { session: false }),
     User.findOne({ googleId: req.user.googleId })
     .then((currentUser) => {
         score = currentUser.score;
-        if (req.body.answer === 'true') {
+        if (req.body.answer === true) {
             score += 1;
         }
         questions = algorithm(currentUser.questions, req.body.answer);

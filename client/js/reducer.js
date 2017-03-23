@@ -1,68 +1,67 @@
 
 const initState = {
 	question: {
-		english: '',
-		french: '',
+		capital: 'A',
+		lowercase: 'a',
 		freq: 1,
+		sounds: []
 	},
 	answer: '',
-	score: 2,
-	counter: 1,
-	language: 'french'
+	score: 0,
+	language: 'lowercase',
+	speechRecognition: 'unavailable',
+	winner: false
 };
 
 const reducer = (state = initState, action) => {
 	switch (action.type) {
-		case 'INCREMENT' :
-			return {
-				...state,
-				counter: action.counter + 1
-			};
-		case 'DECREMENT' :
-			return {
-				...state,
-				counter: action.counter - 1
-			};
 		case 'GET_CARD_SUCCESS':
 			{
 			let answer;
-			if (state.language === 'french') {
-				answer = action.question.question.english;
+			if (state.language === 'lowercase') {
+				answer = action.question.question.capital;
 			} else {
-				answer = action.question.question.french;
+				answer = action.question.question.lowercase;
 			}
 			return {
 				...state,
 				question: action.question.question,
+				score: action.question.score,
 				answer
 			};
 		}
-		case 'ENGAGE_TYPEWRITER' :
+		case 'SET_SPEECH_RECOGNITION' :
 			return {
 				...state,
-				typewriter: action.num
+				speechRecognition: action.status
+			};
+		case 'SET_WINNER':
+			return {
+				...state,
+				winner: action.status
 			};
 		case 'NEXT_QUESTION' :
 			{
 				let answer;
-				if (state.language === 'french') {
-					answer = action.question.question.english;
+				if (state.language === 'lowercase') {
+					answer = action.question.question.capital;
 				} else {
-					answer = action.question.question.french;
+					answer = action.question.question.lowercase;
 				}
 				return {
 					...state,
 					question: action.question.question,
+					score: action.question.score,
 					answer
 				};
 			}
 		case 'SWITCH_LANGUAGE':
 			{
 			const language = state.language;
-			const answer = (language == 'english') ? state.question.english : state.question.french;
+			const answer = (language == 'capital') ? state.question.capital : state.question.lowercase;
 			return {
 				...state,
-				language: language == 'english' ? 'french' : 'english',
+				language: language == 'capital' ? 'lowercase' : 'capital',
 				answer
 			};
 			}
