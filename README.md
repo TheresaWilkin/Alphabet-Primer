@@ -1,23 +1,20 @@
+# Alphabet Primer
 
-[![Build Status](https://travis-ci.org/alexpoe22/Spaced_Repetition.svg?branch=master)](https://travis-ci.org/alexpoe22/Spaced_Repetition)
-
-# InstaFrench
-
-Link: https://stark-river-80170.herokuapp.com/
+Link: http://powerful-depths-44928.herokuapp.com/
 
 ## Description
 
-A way to learn french through spaced repetition. 
+A spaced-repetition alphabet-learning program with voice recognition available on some browsers.
 
 ## Screenshots
 
 ### Homepage/Login
 
-![full page](/client/assets/image1.png)
+![full page](/client/assets/login.png)
 
 ### Spaced Repetition Page
 
-![main page](/client/assets/image2.png)
+![main page](/client/assets/alphabet.png)
 
 ## Tech Stack
 
@@ -44,8 +41,9 @@ A way to learn french through spaced repetition.
 #### `words`
 	{
 		_id: 6327452,
-		french: 'un',
-		english: 'one'
+		capital: 'A',
+		lowercase: 'a',
+		sounds: [ 'a', 'ah', 'hey' ]
 	}
 
 ---
